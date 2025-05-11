@@ -6,7 +6,6 @@
         shell = pkgs.fish;
         packages = with pkgs; [
             spotify
-            slack
             discord
             vscodium
             code-cursor
@@ -16,17 +15,15 @@
             alacritty
             git
             #networkmanager-applet
-            rofi
-            xivlauncher
+            (xivlauncher-rb.override { 
+                # useSteamRun = false; 
+                useGameMode = true;
+            })
             bitwarden
             obs-studio
-            grim
-       	    slurp
             vlc
             vlc-bittorrent
-            kdePackages.dolphin
-            kdePackages.qt6gtk2
-            kdePackages.qt6ct
+            steam
             (zed-editor.fhsWithPackages(zedpkgs: with zedpkgs; [
                zlib
             ])
@@ -38,17 +35,16 @@
         enable = true;
         enableVirtualCamera = true;
         plugins = with pkgs; [
-          obs-studio-plugins.obs-vkcapture
-          obs-studio-plugins.obs-pipewire-audio-capture
-          obs-studio-plugins.obs-vertical-canvas
-          obs-studio-plugins.obs-teleport
-          obs-studio-plugins.input-overlay
-          obs-studio-plugins.obs-ndi
+            obs-studio-plugins.obs-vkcapture
+            obs-studio-plugins.obs-pipewire-audio-capture
+            obs-studio-plugins.obs-vertical-canvas
+            obs-studio-plugins.obs-teleport
+            obs-studio-plugins.input-overlay
+            obs-studio-plugins.obs-ndi
         ];
-      };
+    };
 
     programs.fish.useBabelfish = true;
 
     services.logind.extraConfig = "RuntimeDirectorySize=8G";
-    programs.thunar.enable = true;
 }

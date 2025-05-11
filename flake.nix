@@ -3,21 +3,16 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-        hyprland.url = "github:hyprwm/Hyprland";
-        nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+        nixos-xivlauncher-rb = {
+            url = "github:drakon64/nixos-xivlauncher-rb";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = { self, nixpkgs, nixos-cosmic, ... } @ inputs: {
+    outputs = { self, nixpkgs, nixos-xivlauncher-rb, ... } @ inputs: {
         nixosConfigurations.nikki = nixpkgs.lib.nixosSystem {
-	    specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; };
             modules = [
-              	{
-              	    nix.settings = {
-               		   	  substituters = ["https://cosmic.cachix.org/"];
-                 		    trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-              	    };
-              	}
-              	nixos-cosmic.nixosModules.default
                 ./install-state.nix
                 ./system.nix
                 ./hardware-configuration.nix
@@ -28,11 +23,11 @@
                 ./programs.nix
                 ./nvidia.nix
                 ./ubnt.nix
-                ./cosmic.nix
+                ./plasma.nix
                 ./programming/rust.nix
                 ./programming/node.nix
                 ./programming/csharp.nix
-
+                nixos-xivlauncher-rb.nixosModules.default
             ];
         };
     };
