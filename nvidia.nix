@@ -3,6 +3,7 @@
 
     hardware.graphics = {
         enable = true;
+        enable32Bit = true;
     };
 
     hardware.nvidia = {
@@ -13,4 +14,6 @@
         powerManagement.finegrained = false;
         nvidiaSettings = true;
     };
+    
+    boot.kernelParams = ["NVreg_EnableGpuFirmware=0"];
 }

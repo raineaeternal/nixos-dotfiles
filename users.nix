@@ -5,25 +5,32 @@
         extraGroups = ["networkmanager" "input" "wheel" "video" "audio" "tss"];
         shell = pkgs.fish;
         packages = with pkgs; [
+            # Leisure
             spotify
             discord
-            vscodium
-            code-cursor
-            firefox
-            # arc-browser
-            # ghostty
-            alacritty
-            git
-            #networkmanager-applet
-            (xivlauncher-rb.override { 
-                # useSteamRun = false; 
-                useGameMode = true;
-            })
+            xivlauncher-rb
             bitwarden
-            obs-studio
             vlc
             vlc-bittorrent
             steam
+            obs-studio
+            gimp
+
+            # browsers
+            firefox
+            brave
+
+            # Code editors & dev
+            vscodium
+            code-cursor
+
+            # terminal/git
+            alacritty
+            git
+
+            # perf monitoring
+            mangohud
+
             (zed-editor.fhsWithPackages(zedpkgs: with zedpkgs; [
                zlib
             ])
