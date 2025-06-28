@@ -4,16 +4,28 @@
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
         chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-        nixos-xivlauncher-rb = {
-            url = "github:ProverbialPennance/nixos-xivlauncher-rb";
+        just-one-more-repo = {
+            url = "github:ProverbialPennance/just-one-more-repo";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        aagl = {
+            url = "github:ezKEa/aagl-gtk-on-nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
-    outputs = { self, nixpkgs, chaotic, nixos-xivlauncher-rb, ... } @ inputs: {
+    outputs = { 
+          self, nixpkgs, chaotic, just-one-more-repo, aagl, ... 
+      } @ inputs: {
         nixosConfigurations.nikki = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
             modules = [
+                aagl.nixosModules.default
+                just-one-more-repo.nixosModules.default
+                chaotic.nixosModules.default
+                ./cachix.nix
+                ./kernel.nix
+                ./auto-update.nix
                 ./install-state.nix
                 ./system.nix
                 ./hardware-configuration.nix
@@ -25,11 +37,10 @@
                 ./nvidia.nix
                 ./ubnt.nix
                 ./plasma.nix
+                ./hoyo.nix
                 ./programming/rust.nix
                 ./programming/node.nix
                 ./programming/csharp.nix
-                nixos-xivlauncher-rb.nixosModules.default
-                chaotic.nixosModules.default
             ];
         };
     };

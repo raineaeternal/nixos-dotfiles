@@ -3,6 +3,7 @@
         enable = true;
         operation = "switch";
         flake = "~/Documents/nixos";
-        flags = [];
+        flags = [ "--upgrade-all" ];
+        dates = "weekly";
     };
 }
