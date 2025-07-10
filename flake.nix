@@ -14,8 +14,8 @@
         };
     };
 
-    outputs = { 
-          self, nixpkgs, chaotic, just-one-more-repo, aagl, ... 
+    outputs = {
+          self, nixpkgs, chaotic, just-one-more-repo, aagl, ...
       } @ inputs: {
         nixosConfigurations.nikki = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
@@ -29,15 +29,11 @@
                 ./install-state.nix
                 ./system.nix
                 ./hardware-configuration.nix
-                ./theme.nix
-                ./terminal.nix
                 ./users.nix
                 ./font.nix
-                ./programs.nix
                 ./nvidia.nix
                 ./ubnt.nix
                 ./plasma.nix
-                ./hoyo.nix
                 ./programming/rust.nix
                 ./programming/node.nix
                 ./programming/csharp.nix

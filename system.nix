@@ -45,7 +45,11 @@
         pulse.enable = true;
     };
 
-    environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+    environment.sessionVariables = {
+        PROTON_ENABLE_HDR = 1;
+        PROTON_ENABLE_WAYLAND = 1;
+    };
+    
 
     nixpkgs.config.allowUnfree = true;
 }
