@@ -42,15 +42,17 @@
             # perf monitoring
             mangohud
 
-            (zed-editor.fhsWithPackages(zedpkgs: with zedpkgs; [
-               zlib
-            ])
-          )
-        ];
-    };
+      (zed-editor.fhsWithPackages(zedpkgs: with zedpkgs; [
+         zlib
+      ]))
+    ];
 
     programs.obs-studio = {
         enable = true;
+        pkgs.obs-studio.override {
+            cudaSupport = true;
+        };
+
         enableVirtualCamera = true;
         plugins = with pkgs; [
             obs-studio-plugins.obs-vkcapture
