@@ -5,7 +5,7 @@
         "flakes"
     ];
     # System configuration;
-    # Boot    
+    # Boot
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     # boot.timeout = 2;
@@ -44,12 +44,6 @@
         alsa.support32Bit = true;
         pulse.enable = true;
     };
-
-    environment.sessionVariables = {
-        PROTON_ENABLE_HDR = 1;
-        PROTON_ENABLE_WAYLAND = 1;
-    };
-    
 
     nixpkgs.config.allowUnfree = true;
 }

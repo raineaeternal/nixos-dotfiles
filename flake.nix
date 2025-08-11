@@ -4,10 +4,7 @@
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
         chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-        just-one-more-repo = {
-            url = "github:ProverbialPennance/just-one-more-repo";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        just-one-more-repo.url = "github:ProverbialPennance/just-one-more-repo";
         aagl = {
             url = "github:ezKEa/aagl-gtk-on-nix";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -16,28 +13,31 @@
 
     outputs = {
           self, nixpkgs, chaotic, just-one-more-repo, aagl, ...
-      } @ inputs: {
+      } @ inputs: let
+        inherit (self) outputs;
+        systems = ["x86_64-linux"];
+        forAllSystems = nixpkgs.lib.genAttrs systems;
+      in {
+        formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
         nixosConfigurations.nikki = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-            modules = [
-                aagl.nixosModules.default
-                just-one-more-repo.nixosModules.default
-                chaotic.nixosModules.default
-                ./cachix.nix
-                ./kernel.nix
-                ./auto-update.nix
-                ./install-state.nix
-                ./system.nix
-                ./hardware-configuration.nix
-                ./users.nix
-                ./font.nix
-                ./nvidia.nix
-                ./ubnt.nix
-                ./plasma.nix
-                ./programming/rust.nix
-                ./programming/node.nix
-                ./programming/csharp.nix
-            ];
+          specialArgs = { inherit inputs outputs; };
+          system = "x86_64-linux";
+          modules = [
+              ./games
+              ./hardware
+              ./programs
+              ./services
+              ./system
+              ./users
+              ./vm
+              ./cachix.nix
+              ./auto-update.nix
+              ./font.nix
+              ./ubnt.nix
+              aagl.nixosModules.default
+              just-one-more-repo.nixosModules.default
+              chaotic.nixosModules.default
+          ];
         };
     };
 }

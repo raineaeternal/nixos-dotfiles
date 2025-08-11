@@ -1,4 +1,4 @@
-{ pkgs, hardware, inputs, config, ... }: {
+{ hardware, config, ... }: {
     services.xserver.videoDrivers = ["nvidia"];
 
     hardware.graphics = {

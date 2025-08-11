@@ -9,7 +9,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
@@ -28,6 +28,11 @@
     { device = "/dev/disk/by-uuid/43e510e9-6582-4f92-90ff-09326bbe44e1";
       fsType = "ext4";
     };
+
+  fileSystems."/mnt/1tb" = {
+    device = "/dev/disk/by-uuid/11f8da3b-fb22-4e68-8af0-946c73b457cd";
+    fsType = "ext4";
+  };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/75e34e08-bec0-4092-b9fc-11d320f32df9"; }

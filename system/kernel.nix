@@ -7,5 +7,9 @@
         "ntsync"
     ];
 
+  # These cause instability for me, somehow
+  #  services.scx.enable = true;
+  #  services.scx.scheduler = "scx_lavd";
+
     security.polkit.enable = true;
 }
