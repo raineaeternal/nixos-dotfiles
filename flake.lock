@@ -123,11 +123,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1754845531,
-        "narHash": "sha256-2jMGzw3MdWHaG4Q+aTzPbu7xxjFV4hsMVrxvzoL0Ltc=",
+        "lastModified": 1754945464,
+        "narHash": "sha256-0k+6OMLTXVh7J9N5ufVQM7nwsZjx5QIwe+50RHItMnY=",
         "owner": "ProverbialPennance",
         "repo": "just-one-more-repo",
-        "rev": "18c6cfa65152cce3f7c71114315523f08324a9bc",
+        "rev": "39e141fb7ae2daca0df0dcd4f554a787f5e171ba",
         "type": "github"
       },
       "original": {
