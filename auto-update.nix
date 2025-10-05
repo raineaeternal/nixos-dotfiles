@@ -1,9 +1,9 @@
 { system, ... }: {
     system.autoUpgrade = {
         enable = true;
-        operation = "switch";
-        flake = "~/Documents/nixos";
+        operation = "boot";
+        flake = "~/Documents/nixos#foxhole";
         flags = [ "--upgrade-all" ];
-        dates = "weekly";
+        dates = "monthly";
     };
 }
