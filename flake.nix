@@ -37,11 +37,19 @@
               chaotic.nixosModules.default
           ];
         };
-        
+
         nixosConfigurations.portable = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           system = "x86_64-linux";
           modules = [
+            ./games
+            ./hardware
+            ./programs
+            ./services
+            ./system
+            ./users
+            ./cachix.nix
+            ./auto-update.nix
             aagl.nixosModules.default
             just-one-more-repo.nixosModules.default
             chaotic.nixosModules.default
