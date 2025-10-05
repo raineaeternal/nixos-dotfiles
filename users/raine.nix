@@ -1,18 +1,19 @@
 { config, pkgs, ... }: {
-    users.users.nikki = {
+    users.users.foxxy = {
         isNormalUser = true;
-        description = "raine";
-        extraGroups = ["networkmanager" "input" "wheel" "video" "audio" "tss"];
+        description = "foxxy";
+	extraGroups = ["networkmanager" "input" "wheel" "video" "audio" "tss"];
+        uid = 1000;
         shell = pkgs.zsh;
     };
 
     environment.systemPackages = with pkgs; [
       # Leisure
       discord
-      teamspeak3
+      # teamspeak3
       bitwarden
       vlc
-      vlc-bittorrent
+      # vlc-bittorrent
 
       # browsers
       firefox

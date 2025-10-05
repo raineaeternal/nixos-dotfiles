@@ -8,6 +8,7 @@
           plugins = [ "git" "sudo" ];
       };
       interactiveShellInit = ''
+          source ~/.zshrc
           export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
           ZSH_THEME="edvardm"
 

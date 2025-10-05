@@ -15,6 +15,7 @@
 
     # Network
     networking.networkmanager.enable = true;
+    networking.hostName = "foxhole";
 
     # Time
     time.timeZone = "Europe/Oslo";
@@ -30,6 +31,7 @@
         layout = "no";
         variant = "winkeys";
     };
+    programs.xwayland.enable = true;
     console.keyMap = "no";
 
     # CUPS
